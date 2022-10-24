@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:first_app/QuestionClass.dart';
+import './QuestionClass.dart';   // Question Widget Class
+import './OptionClass.dart';     // Options Widget Class
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -10,18 +13,39 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var mcqIndex = 0;
 
   var questions = [
-    "What is national animal of India ?",
+    "what is national animal of India ?",
     "Which is the smallest state in India ?",
-    "What is capital of Maharastra ?"
+    "Which is the capital of Maharashtra ?"
+  ];
+
+  var options = [
+    ['Lion', 'Tiger', 'Cheetah', 'Elephant'],
+    ['Kashmir', 'Kerala', 'Goa', 'Rajasthan'],
+    ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
+  ];
+
+  List<Map<String, Object>> MCQ = [
+    {
+      'questionText' : 'What is national animal of India ?',
+      'optionsList' : ['Lion', 'Tiger', 'Cheetah', 'Elephant']
+    },
+    {
+      'questionText' : 'Which is the smallest state in India ?',
+      'optionList' : ['Kashmir', 'Kerala', 'Goa', 'Rajasthan']
+    },
+    {
+      'questionText' : 'Which is the capital of Maharashtra ?',
+      'optionList' : ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
+    }
   ];
 
   void nextQuestion() {
     setState(() {
-      questionIndex++;
-      questionIndex %= questions.length;
+      mcqIndex++;
+      mcqIndex %= MCQ.length;
     });
   }
 
@@ -30,36 +54,29 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('My-First-App'),
+            title: Text('Quiz App'),
           ),
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Question(
-                  questions[questionIndex]
+                  questionText: MCQ[mcqIndex]['questionText'],
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Option 1 chosen');
-                  nextQuestion();
-                },
-                child: Text('Barak Obama'),
+              Option(
+                option: options[mcqIndex][1],
+                functionPointer: nextQuestion,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Option 2 chosen');
-                  nextQuestion();
-                },
-                child: Text('Shinjo Abe'),
+              Option(
+                option: options[mcqIndex][1],
+                functionPointer: nextQuestion,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Option 3 chosen');
-                  nextQuestion();
-                },
-                child: Text('Atalbihari Vajpei'),
+              Option(
+                option: options[mcqIndex][2],
+                functionPointer: nextQuestion,
               ),
+              Option(
+                option: options[mcqIndex][3],
+                functionPointer: nextQuestion,
+              )
             ],
           )
       ),
