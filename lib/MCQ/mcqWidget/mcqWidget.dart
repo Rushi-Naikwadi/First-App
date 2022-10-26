@@ -5,7 +5,7 @@ import 'package:first_app/MCQ/qustionOptionWidgets/optionWidget.dart';
 import 'package:first_app/MCQ/mcqStructureClass/mcqStructureClass.dart';
 
 class mcqWidget extends StatelessWidget {
-  final curMCQ;
+  final MCQ curMCQ;
   final Function functionPointer;
   mcqWidget (this.functionPointer, this.curMCQ);
 
@@ -13,12 +13,14 @@ class mcqWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 150),
         questionWidget(
           questionText: curMCQ.questionText,
         ),
-        ...(curMCQ.optionList).map((option) {
+        SizedBox(height: 10),
+        ...(curMCQ.optionList).map((optionDetail) {
           return optionWidget(
-              optionText: option,
+              option: optionDetail,
               functionPointer: functionPointer
           );
         }).toList(),

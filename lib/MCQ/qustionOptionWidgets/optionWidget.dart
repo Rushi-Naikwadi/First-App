@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '../mcqStructureClass/mcqStructureClass.dart';
+
 class optionWidget extends StatelessWidget {
 
-  final String optionText;
+  final optionWithScore option;
   final Function functionPointer;
 
-  optionWidget ({this.optionText, this.functionPointer});
+  optionWidget ({this.option, this.functionPointer});
 
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(2.5),
-      padding: EdgeInsets.all(2.5),
+      height: 40,
+      width: 370,
+      margin: EdgeInsets.all(3),
+      padding: EdgeInsets.all(1),
       child: ElevatedButton(
         onPressed: () {
-          functionPointer();
+          functionPointer(option.optionScore);
         },
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green[900],
+            backgroundColor: Colors.lightGreen,
         ),
         child: Text(
-            optionText,
+            option.optionText,
             style: TextStyle(
-              color: Colors.blue,
+              fontSize: 20,
             ),
         ),
       ),

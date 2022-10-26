@@ -1,6 +1,13 @@
+class optionWithScore {
+  final String optionText;
+  final int optionScore;
+
+  optionWithScore(this.optionText, this.optionScore);
+}
+
 class MCQ {
   String questionText;
-  List <String> optionList;
+  List <optionWithScore> optionList;
 
   MCQ (this.questionText, this.optionList);
 }
