@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-import './main.dart';
-
 class Option extends StatelessWidget {
 
-  final String option;
+  final String optionText;
   final Function functionPointer;
 
-  Option ({this.option, this.functionPointer});
+  Option ({this.optionText, this.functionPointer});
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -22,7 +21,7 @@ class Option extends StatelessWidget {
             backgroundColor: Colors.green[900]
         ),
         child: Text(
-            option,
+            optionText,
             style: TextStyle(
               color: Colors.blue,
             ),

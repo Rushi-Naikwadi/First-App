@@ -13,41 +13,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var mcqIndex = 0;
+  var _mcqIndex = 0;
 
-  var questions = [
-    "what is national animal of India ?",
-    "Which is the smallest state in India ?",
-    "Which is the capital of Maharashtra ?"
-  ];
+  void _nextQuestion() {
+    setState(() {
+      _mcqIndex++;
+      _mcqIndex %= mcqList.length;
+    });
+  }
 
-  var options = [
-    ['Lion', 'Tiger', 'Cheetah', 'Elephant'],
-    ['Kashmir', 'Kerala', 'Goa', 'Rajasthan'],
-    ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
-  ];
-
-  List<Map<String, Object>> MCQ = [
+  static const mcqList = [
     {
       'questionText' : 'What is national animal of India ?',
-      'optionsList' : ['Lion', 'Tiger', 'Cheetah', 'Elephant']
+      'optionsList' : ['Lion', 'Tiger', 'Cheetah', 'Elephant'],
     },
     {
       'questionText' : 'Which is the smallest state in India ?',
-      'optionList' : ['Kashmir', 'Kerala', 'Goa', 'Rajasthan']
+      'optionList' : ['Kashmir', 'Kerala', 'Goa', 'Rajasthan'],
     },
     {
       'questionText' : 'Which is the capital of Maharashtra ?',
-      'optionList' : ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
+      'optionList' : ['Nagpur', 'Mumbai', 'Pune', 'Nashik'],
     }
   ];
-
-  void nextQuestion() {
-    setState(() {
-      mcqIndex++;
-      mcqIndex %= MCQ.length;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,24 +47,14 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: [
               Question(
-                  questionText: MCQ[mcqIndex]['questionText'],
+                  questionText: (mcqList[_mcqIndex]['questionText'] as String),
               ),
-              Option(
-                option: options[mcqIndex][1],
-                functionPointer: nextQuestion,
-              ),
-              Option(
-                option: options[mcqIndex][1],
-                functionPointer: nextQuestion,
-              ),
-              Option(
-                option: options[mcqIndex][2],
-                functionPointer: nextQuestion,
-              ),
-              Option(
-                option: options[mcqIndex][3],
-                functionPointer: nextQuestion,
-              )
+              ...(mcqList[_mcqIndex]['optionList'] as List<String>).map((option) {
+                  return Option(
+                      optionText: option,
+                      functionPointer: _nextQuestion
+                  );
+              }).toList()
             ],
           )
       ),
