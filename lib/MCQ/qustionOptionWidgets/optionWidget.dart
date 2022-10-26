@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Option extends StatelessWidget {
+class optionWidget extends StatelessWidget {
 
   final String optionText;
   final Function functionPointer;
 
-  Option ({this.optionText, this.functionPointer});
+  optionWidget ({this.optionText, this.functionPointer});
 
   Widget build(BuildContext context) {
     return Container(

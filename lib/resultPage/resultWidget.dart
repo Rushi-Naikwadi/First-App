@@ -5,9 +5,10 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'You did it!',
+        'Whoa, You did it!',
         style: TextStyle(
-          fontSize: 35,
+          fontSize: 45,
+          color: Colors.blueAccent
         ),
       ),
     );
