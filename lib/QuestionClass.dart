@@ -8,7 +8,7 @@ class Question extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         color: Colors.red
       ),
       width: double.infinity,

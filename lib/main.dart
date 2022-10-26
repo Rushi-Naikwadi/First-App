@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './QuestionClass.dart';   // Question Widget Class
-import './OptionClass.dart';     // Options Widget Class
+import './OptionClass.dart';     // optionList Widget Class
 
 void main() {
   runApp(MyApp());
@@ -13,41 +13,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var mcqIndex = 0;
+  var _mcqIndex = 0;
 
-  var questions = [
+  void _nextQuestion() {
+    setState(() {
+      _mcqIndex++;
+      _mcqIndex = _mcqIndex % questionList.length;
+    });
+  }
+
+  var questionList = [
     "what is national animal of India ?",
     "Which is the smallest state in India ?",
     "Which is the capital of Maharashtra ?"
   ];
 
-  var options = [
+  var optionList = [
     ['Lion', 'Tiger', 'Cheetah', 'Elephant'],
     ['Kashmir', 'Kerala', 'Goa', 'Rajasthan'],
     ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
   ];
-
-  List<Map<String, Object>> MCQ = [
-    {
-      'questionText' : 'What is national animal of India ?',
-      'optionsList' : ['Lion', 'Tiger', 'Cheetah', 'Elephant']
-    },
-    {
-      'questionText' : 'Which is the smallest state in India ?',
-      'optionList' : ['Kashmir', 'Kerala', 'Goa', 'Rajasthan']
-    },
-    {
-      'questionText' : 'Which is the capital of Maharashtra ?',
-      'optionList' : ['Nagpur', 'Mumbai', 'Pune', 'Nashik']
-    }
-  ];
-
-  void nextQuestion() {
-    setState(() {
-      mcqIndex++;
-      mcqIndex %= MCQ.length;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,27 +40,29 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
           appBar: AppBar(
             title: Text('Quiz App'),
+            centerTitle: true,
+            backgroundColor: Colors.deepPurpleAccent,
           ),
           body: Column(
             children: [
               Question(
-                  questionText: MCQ[mcqIndex]['questionText'],
+                  questionText: questionList[_mcqIndex],
               ),
               Option(
-                option: options[mcqIndex][1],
-                functionPointer: nextQuestion,
+                optionText: optionList[_mcqIndex][0],
+                functionPointer: _nextQuestion,
               ),
               Option(
-                option: options[mcqIndex][1],
-                functionPointer: nextQuestion,
+                optionText: optionList[_mcqIndex][1],
+                functionPointer: _nextQuestion,
               ),
               Option(
-                option: options[mcqIndex][2],
-                functionPointer: nextQuestion,
+                optionText: optionList[_mcqIndex][2],
+                functionPointer: _nextQuestion,
               ),
               Option(
-                option: options[mcqIndex][3],
-                functionPointer: nextQuestion,
+                optionText: optionList[_mcqIndex][3],
+                functionPointer: _nextQuestion,
               )
             ],
           )

@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 
-import './main.dart';
-
 class Option extends StatelessWidget {
 
-  final String option;
+  final String optionText;
   final Function functionPointer;
 
-  Option ({this.option, this.functionPointer});
+  Option ({this.optionText, this.functionPointer});
 
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.all(2.5),
+      padding: EdgeInsets.all(2.5),
       child: ElevatedButton(
         onPressed: () {
           functionPointer();
         },
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green[900]
+            backgroundColor: Colors.green[900],
         ),
         child: Text(
-            option,
+            optionText,
             style: TextStyle(
               color: Colors.blue,
             ),
