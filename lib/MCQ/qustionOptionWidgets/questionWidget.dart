@@ -7,14 +7,14 @@ class questionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
+      height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(15)),
         color: Colors.cyan
       ),
       width: double.infinity,
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(10),
       child: Center(
         child: Text(
             questionText,

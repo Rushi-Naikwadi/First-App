@@ -13,11 +13,11 @@ class mcqWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 150),
+        SizedBox(height: 125),
         questionWidget(
           questionText: curMCQ.questionText,
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 15),
         ...(curMCQ.optionList).map((optionDetail) {
           return optionWidget(
               option: optionDetail,

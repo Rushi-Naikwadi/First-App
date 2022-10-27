@@ -4,7 +4,9 @@ class resultWidget extends StatelessWidget {
 
   final Function _resetQuiz;
   final int _totalScore;
-  resultWidget(this._totalScore, this._resetQuiz);
+  final int _totalQuestions;
+
+  resultWidget(this._totalScore, this._totalQuestions, this._resetQuiz);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class resultWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Your Score : $_totalScore',
+            'Your Score : $_totalScore / $_totalQuestions',
             style: TextStyle(
                 fontSize: 35,
                 color: Colors.black
@@ -24,8 +26,8 @@ class resultWidget extends StatelessWidget {
           FloatingActionButton.extended(
               onPressed: _resetQuiz,
               icon: Icon(Icons.lock_reset_sharp),
-              label: Text('Play again!'),
-          ),
+              label: Text('Play again!')
+          )
         ],
       ),
     );
