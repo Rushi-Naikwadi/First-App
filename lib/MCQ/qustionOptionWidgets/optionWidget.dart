@@ -11,9 +11,7 @@ class optionWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 370,
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.fromLTRB(2.5, 0, 2.5, 0),
       padding: EdgeInsets.all(1),
       child: ElevatedButton(
         onPressed: () {

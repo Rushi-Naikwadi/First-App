@@ -13,7 +13,6 @@ class questionWidget extends StatelessWidget {
         color: Colors.cyan
       ),
       width: double.infinity,
-      margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       child: Center(
         child: Text(

@@ -11,20 +11,53 @@ class mcqWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 125),
-        questionWidget(
-          questionText: curMCQ.questionText,
-        ),
-        SizedBox(height: 15),
-        ...(curMCQ.optionList).map((optionDetail) {
-          return optionWidget(
-              option: optionDetail,
-              functionPointer: functionPointer
-          );
-        }).toList(),
-      ],
+    return Container(
+      margin: EdgeInsets.all(15),
+      child: Column(
+        children: [
+          SizedBox(height: 125),
+          questionWidget(
+            questionText: curMCQ.questionText,
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: optionWidget(
+                  option: (curMCQ.optionList).elementAt(0),
+                  functionPointer: functionPointer
+                ),
+              ),
+              SizedBox(width: 5),
+              Expanded(
+                child: optionWidget(
+                    option: (curMCQ.optionList).elementAt(1),
+                    functionPointer: functionPointer
+                ),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: optionWidget(
+                    option: (curMCQ.optionList).elementAt(2),
+                    functionPointer: functionPointer
+                ),
+              ),
+              SizedBox(width: 5),
+              Expanded(
+                child: optionWidget(
+                    option: (curMCQ.optionList).elementAt(3),
+                    functionPointer: functionPointer
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
